@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - FreshMart</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/shop.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span>FreshMart</span>
+                </div>
+                
+                <nav class="nav desktop-nav">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for products..." class="search-input" id="searchInput">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                        <div class="search-suggestions" id="searchSuggestions"></div>
+                    </div>
+                    
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="shop.html" class="nav-link active">Shop</a>
+                        <a href="offers.html" class="nav-link">Offers</a>
+                        <a href="orders.html" class="nav-link">My Orders</a>
+                        <a href="profile.html" class="nav-link">Profile</a>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <a href="cart.html" class="cart-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </nav>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Shop</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Shop Content -->
+    <main class="shop-main">
+        <div class="container">
+            <div class="shop-header-main">
+                <h1>Shop All Products</h1>
+                <p>Discover fresh groceries and everyday essentials</p>
+            </div>
+            <div class="shop-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Filters</h3>
+                        <button class="clear-filters" id="clearFilters">Clear All</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="fruits" name="category"> Fruits</label>
+                            <label><input type="checkbox" value="vegetables" name="category"> Vegetables</label>
+                            <label><input type="checkbox" value="dairy" name="category"> Dairy</label>
+                            <label><input type="checkbox" value="snacks" name="category"> Snacks</label>
+                            <label><input type="checkbox" value="beverages" name="category"> Beverages</label>
+                            <label><input type="checkbox" value="household" name="category"> Household</label>
+                            <label><input type="checkbox" value="personal-care" name="category"> Personal Care</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-range">
+                            <input type="range" min="0" max="50" value="50" class="price-slider" id="priceRange">
+                            <div class="price-values">
+                                <span>$0</span>
+                                <span id="maxPrice">$50</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Rating</h4>
+                        <div class="rating-filter">
+                            <label><input type="radio" name="rating" value="4"> 4+ Stars</label>
+                            <label><input type="radio" name="rating" value="3"> 3+ Stars</label>
+                            <label><input type="radio" name="rating" value="2"> 2+ Stars</label>
+                            <label><input type="radio" name="rating" value="all"> All Ratings</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Special</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="special" value="organic"> Organic</label>
+                            <label><input type="checkbox" name="special" value="sale"> On Sale</label>
+                            <label><input type="checkbox" name="special" value="instock"> In Stock</label>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Products Area -->
+                <div class="products-area">
+                    <div class="shop-header">
+                        <div class="results-info">
+                            <span id="resultsCount">Showing 1-21 of 21 products</span>
+                        </div>
+                        <div class="shop-controls">
+                            <select class="sort-select" id="sortSelect">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Best Rating</option>
+                                <option value="newest">Newest</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+/* -------------------------
+   PRODUCTS - fetch from PHP
+   ------------------------- */
+
+let products = [];
+let filteredProducts = [];
+
+// URL to your backend script (adjust if your path is different)
+const PRODUCTS_API = "http://localhost/Fp/backend/get_products.php";
+
+// Load products from backend and convert types
+async function loadProducts() {
+  try {
+    console.log("Loading products from:", PRODUCTS_API);
+    const res = await fetch(PRODUCTS_API);
+    if (!res.ok) throw new Error("Network response not OK: " + res.status);
+    const data = await res.json();
+    console.log("Raw products JSON:", data);
+
+    // convert fields that may arrive as strings to numbers
+    products = (data || []).map(p => ({
+      id: p.id !== undefined ? parseInt(p.id, 10) : undefined,
+      name: p.name || "",
+      description: p.description || "",
+      category: p.category || "",
+      price: p.price !== null && p.price !== undefined ? parseFloat(p.price) : 0,
+      discount_price: p.discount_price !== null && p.discount_price !== undefined && p.discount_price !== "" ? parseFloat(p.discount_price) : null,
+      rating: p.rating !== null && p.rating !== undefined && p.rating !== "" ? parseFloat(p.rating) : 0,
+      image: p.image || "" ,
+      // optional flags that might not exist in DB; handle gracefully
+      organic: p.organic === "1" || p.organic === 1 || p.organic === true || p.organic === "true" || false
+    }));
+
+    filteredProducts = [...products];
+    renderProducts();
+  } catch (err) {
+    console.error("Error loading products:", err);
+    const grid = document.getElementById('productsGrid');
+    if (grid) grid.innerHTML = `<p class="error">Failed to load products. Check console/network.</p>`;
+  }
+}
+
+// Helper: return correct image URL (supports full URLs or local filename)
+function getImageUrl(product) {
+  if (!product || !product.image) return "images/placeholder.png"; // add placeholder image in images/
+  // if image is a full URL (http(s) or protocol-less //), use it directly
+  if (/^(https?:)?\/\//.test(product.image)) return product.image;
+  // otherwise assume it's a filename stored in Frontend/images/
+  return `images/${product.image}`;
+}
+
+// Render products into #productsGrid
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  if (!grid) {
+    console.error("productsGrid element not found");
+    return;
+  }
+
+  if (!filteredProducts || filteredProducts.length === 0) {
+    grid.innerHTML = `<p class="no-results">No products found.</p>`;
+    document.getElementById('resultsCount').textContent = `Showing 0 of ${products.length} products`;
+    return;
+  }
+
+  grid.innerHTML = filteredProducts.map(product => {
+    // safe numeric display
+    const displayPrice = product.discount_price !== null ? product.discount_price : product.price;
+    const displayPriceStr = Number(displayPrice || 0).toFixed(2);
+    const originalPriceStr = product.discount_price !== null ? Number(product.price || 0).toFixed(2) : "";
+    const ratingNum = Math.round(product.rating || 0);
+    const stars = '★'.repeat(ratingNum) + '☆'.repeat(5 - ratingNum);
+
+    return `
+      <div class="product-card">
+        <div class="product-image">
+          <img src="${getImageUrl(product)}" alt="${escapeHtml(product.name)}">
+        </div>
+        <div class="product-info">
+          <div class="product-category">${escapeHtml(product.category)}</div>
+          <h3 class="product-name">${escapeHtml(product.name)}</h3>
+          <p class="product-desc">${escapeHtml(product.description)}</p>
+          <div class="product-rating">
+            <span class="stars">${stars}</span>
+            <span class="rating-text">${product.rating ?? "0.0"}</span>
+          </div>
+          <div class="product-price">
+            <span class="current-price">$${displayPriceStr}</span>
+            ${originalPriceStr ? `<span class="original-price">$${originalPriceStr}</span>` : ''}
+          </div>
+          <div class="product-actions">
+            <button class="add-to-cart" onclick="addToCart(${product.id})">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleWishlist(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('resultsCount').textContent = `Showing 1-${filteredProducts.length} of ${products.length} products`;
+}
+
+// basic XSS escape for text fields used inside HTML
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/* -------------------------
+   CART + UI helpers
+   ------------------------- */
+function addToCart(productId) {
+  const id = Number(productId);
+  const product = products.find(p => p.id === id);
+  if (!product) return alert("Product not found");
+
+ let cart = JSON.parse(localStorage.getItem('freshmart_cart') || '[]');
+  const existing = cart.find(item => item.id === id);
+  if (existing) existing.quantity += 1;
+  else cart.push({ id: product.id, name: product.name, price: product.discount_price ?? product.price, quantity: 1, image: product.image });
+
+  localStorage.setItem('freshmart_cart', JSON.stringify(cart));
+  window.store.updateCartCount();
+}
+
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem('freshmart_cart') || '[]');
+  const count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+  const el = document.getElementById('cartCount');
+  if (el) el.textContent = count;
+}
+
+function toggleWishlist(btn) {
+  const icon = btn.querySelector('i');
+  icon.classList.toggle('far');
+  icon.classList.toggle('fas');
+  btn.classList.toggle('active');
+}
+
+/* -------------------------
+   FILTERING
+   ------------------------- */
+function filterProducts() {
+  const categories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+  const priceMax = parseFloat(document.getElementById('priceRange').value || "0");
+  const ratingFilter = document.querySelector('input[name="rating"]:checked')?.value || 'all';
+  const organicChecked = !!document.querySelector('input[name="special"][value="organic"]')?.checked;
+  const saleChecked = !!document.querySelector('input[name="special"][value="sale"]')?.checked;
+
+  filteredProducts = products.filter(product => {
+    if (categories.length > 0 && !categories.includes(product.category)) return false;
+    if (!isNaN(priceMax) && product.price > priceMax) return false;
+    if (ratingFilter !== 'all' && product.rating < parseFloat(ratingFilter)) return false;
+    if (organicChecked && !product.organic) return false;
+    if (saleChecked && !(product.discount_price !== null && product.discount_price < product.price)) return false;
+    return true;
+  });
+
+  renderProducts();
+}
+
+/* -------------------------
+   DOM events
+   ------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  loadProducts();
+
+  // filter inputs
+  document.querySelectorAll('input[name="category"], input[name="rating"], input[name="special"]').forEach(input => {
+    input.addEventListener('change', filterProducts);
+  });
+
+  const priceRange = document.getElementById('priceRange');
+  if (priceRange) {
+    priceRange.addEventListener('input', (e) => {
+      document.getElementById('maxPrice').textContent = '$' + e.target.value;
+      filterProducts();
+    });
+  }
+
+  document.getElementById('clearFilters')?.addEventListener('click', () => {
+    document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => input.checked = false);
+    if (priceRange) { priceRange.value = priceRange.max || 50; document.getElementById('maxPrice').textContent = '$' + priceRange.value; }
+    filteredProducts = [...products];
+    renderProducts();
+  });
+
+  updateCartCount();
+});
+
+</script>
+
+</body>
+</html>
