@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - FreshMart</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span>FreshMart</span>
+                </div>
+                <nav class="nav desktop-nav">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for products..." class="search-input" id="searchInput">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="shop.html" class="nav-link">Shop</a>
+                        <a href="offers.html" class="nav-link">Offers</a>
+                        <a href="orders.html" class="nav-link">My Orders</a>
+                        <a href="profile.html" class="nav-link active">Profile</a>
+                        <div id="user-info-container"></div>
+                        <div id="auth-links-container">
+                            <a href="login.html" class="nav-link">Login</a>
+                            <a href="signup.html" class="nav-link">Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                        <a href="cart.html" class="cart-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>My Profile</span>
+            </nav>
+        </div>
+    </div>
+
+    <main class="profile-main">
+        <div class="container">
+            <div class="profile-layout">
+                <aside class="profile-sidebar">
+                    <div class="card profile-card">
+                        <div class="profile-avatar">
+                            <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Profile" id="profileImage">
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profileName">Loading...</h3>
+                            <p id="profileEmail">Loading...</p>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat"><span class="stat-number" id="totalOrders">12</span><span class="stat-label">Orders</span></div>
+                            <div class="stat"><span class="stat-number" id="totalSaved">$245</span><span class="stat-label">Saved</span></div>
+                            <div class="stat"><span class="stat-number" id="memberSince">2023</span><span class="stat-label">Member Since</span></div>
+                        </div>
+                    </div>
+                    <nav class="profile-nav">
+    <a href="#" class="profile-nav-link active" data-tab="personal">
+        <i class="fas fa-user"></i> Personal Info
+    </a>
+    <a href="#" class="profile-nav-link" data-tab="addresses">
+        <i class="fas fa-map-marker-alt"></i> Addresses
+    </a>
+    <a href="#" class="profile-nav-link" data-tab="payment">
+        <i class="fas fa-credit-card"></i> Payment Methods
+    </a>
+    <a href="#" class="profile-nav-link" data-tab="preferences">
+        <i class="fas fa-cog"></i> Preferences
+    </a>
+    <a href="#" class="profile-nav-link" data-tab="security">
+        <i class="fas fa-shield-alt"></i> Security
+    </a>
+</nav>  
+                </aside>
+
+                <div class="profile-content card">
+    <div class="tab-content active" id="personal">
+        <div class="content-header">
+            <h2>Personal Information</h2>
+            <button class="btn btn-primary">Edit</button>
+        </div>
+        <div class="form-section">
+            <div class="form-row">
+                <div class="form-group"><label for="firstName">First Name</label><input type="text" class="form-input" id="firstName" readonly></div>
+                <div class="form-group"><label for="lastName">Last Name</label><input type="text" class="form-input" id="lastName" readonly></div>
+            </div>
+            <div class="form-group"><label for="email">Email Address</label><input type="email" class="form-input" id="email" readonly></div>
+            <div class="form-row">
+                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" class="form-input" id="phone" readonly></div>
+                <div class="form-group"><label for="dob">Date of Birth</label><input type="date" class="form-input" id="dob" readonly></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="addresses">
+        <div class="content-header">
+            <h2>Delivery Addresses</h2>
+            <button class="btn btn-primary">Add New Address</button>
+        </div>
+        <div class="addresses-grid" id="addressesGrid">
+            <p>You have not added any addresses yet.</p>
+        </div>
+    </div>
+
+    <div class="tab-content" id="payment">
+        <div class="content-header">
+            <h2>Payment Methods</h2>
+            <button class="btn btn-primary">Add New Card</button>
+        </div>
+        <p>You have not added any payment methods yet.</p>
+    </div>
+
+    <div class="tab-content" id="preferences">
+        <div class="content-header">
+            <h2>Preferences</h2>
+        </div>
+        <p>Manage your notification and delivery preferences here.</p>
+    </div>
+
+    <div class="tab-content" id="security">
+        <div class="content-header">
+            <h2>Security</h2>
+        </div>
+        <p>Change your password and manage account security.</p>
+    </div>
+</div>
+            
+        
+    </main>
+<div class="modal-backdrop" id="addAddressModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Address</h3>
+            <button class="modal-close" id="closeAddressModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="addAddressForm">
+                <div class="form-group">
+                    <label for="addressLine1">Address Line 1</label>
+                    <input type="text" id="addressLine1" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="addressLine2">Address Line 2 (Optional)</label>
+                    <input type="text" id="addressLine2" class="form-input">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" class="form-input" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">ZIP Code</label>
+                    <input type="text" id="zipCode" class="form-input" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Address</button>
+            </form>
+        </div>
+    </div>
+</div>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/profile.js"></script>
+</body>
+</html>
