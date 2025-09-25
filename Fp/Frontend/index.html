@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMart - Online Grocery Store</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/homepage.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-shopping-basket"></i>
+            </div>
+            <div class="loader-text">Loading FreshMart...</div>
+        </div>
+    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span>FreshMart</span>
+                </div>
+                
+                <nav class="nav desktop-nav">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for products..." class="search-input" id="searchInput">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                        <div class="search-suggestions" id="searchSuggestions"></div>
+                    </div>
+                    
+             <div class="nav-links">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="shop.html" class="nav-link">Shop</a>
+    <a href="offers.html" class="nav-link">Offers</a>
+    <a href="orders.html" class="nav-link">My Orders</a>
+    
+    
+    <div id="user-info-container"></div>
+
+    <div id="auth-links-container">
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="signup.html" class="nav-link">Sign Up</a>
+    </div>
+</div>
+
+                    
+                    <div class="header-actions">
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <a href="cart.html" class="cart-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </nav>
+
+
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+  
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Trusted by 50,000+ customers</span>
+                    </div>
+                    <h1 class="hero-title">Fresh Groceries Delivered to Your Door</h1>
+                    <p class="hero-subtitle">Get the freshest produce, organic foods, and everyday essentials delivered within hours.</p>
+                    <div class="hero-actions">
+                        <a href="shop.html" class="btn btn-primary btn-large">Shop Now</a>
+                        <div class="hero-features">
+                            <div class="feature">
+                                <i class="fas fa-truck"></i>
+                                <span>Free Delivery</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-leaf"></i>
+                                <span>100% Organic</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-clock"></i>
+                                <span>Same Day</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fresh groceries">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="fruits">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Fruits">
+                    </div>
+                    <h3>Fruits</h3>
+                    <p>Fresh & Sweet</p>
+                </div>
+                <div class="category-card" data-category="vegetables">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/1458694/pexels-photo-1458694.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Vegetables">
+                    </div>
+                    <h3>Vegetables</h3>
+                    <p>Farm Fresh</p>
+                </div>
+                <div class="category-card" data-category="snacks">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/2122278/pexels-photo-2122278.jpeg?_gl=1*14o1xn3*_ga*OTU0ODE0MzUwLjE3NTgzMTAzNTE.*_ga_8JE65Q40S6*czE3NTgzMTAzNTAkbzEkZzEkdDE3NTgzMTA0MzUkajU5JGwwJGgw">
+                    </div>
+                    <h3>Snacks</h3>
+                    <p>Healthy Bites</p>
+                </div>
+                <div class="category-card" data-category="beverages">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/2531184/pexels-photo-2531184.jpeg?_gl=1*rmy5xv*_ga*OTU0ODE0MzUwLjE3NTgzMTAzNTE.*_ga_8JE65Q40S6*czE3NTgzMTAzNTAkbzEkZzEkdDE3NTgzMTA2MzEkajE2JGwwJGgw" alt="Beverages">
+                    </div>
+                    <h3>Beverages</h3>
+                    <p>Refreshing Drinks</p>
+                </div>
+                <div class="category-card" data-category="dairy">
+                    <div class="category-image">
+                        <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/9685/iStock-544807136.jpg" alt="Dairy">
+                    </div>
+                    <h3>Dairy</h3>
+                    <p>Pure & Natural</p>
+                </div>
+                <div class="category-card" data-category="household">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/4239041/pexels-photo-4239041.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Household">
+                    </div>
+                    <h3>Household</h3>
+                    <p>Daily Essentials</p>
+                </div>
+                <div class="category-card" data-category="personal-care">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/3735657/pexels-photo-3735657.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Personal Care">
+                    </div>
+                    <h3>Personal Care</h3>
+                    <p>Health & Beauty</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hot Selling Products</h2>
+                <a href="shop.html" class="view-all-btn">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-carousel">
+                <button class="carousel-btn prev" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="products-container" id="featuredProducts">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+                <button class="carousel-btn next" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <div class="promo-text">
+                    <h2>Special Offer: 30% Off on Organic Products</h2>
+                    <p>Limited time offer on all organic fruits and vegetables. Fresh, healthy, and delivered to your door.</p>
+                    <a href="shop.html?category=organic" class="btn btn-secondary btn-large">Shop Organic <i class="fas fa-leaf"></i></a>
+                </div>
+                <div class="promo-image">
+                    <img src="https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Organic vegetables">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose FreshMart?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your groceries delivered within 2 hours. Same-day delivery available for orders placed before 6 PM.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>We source only the freshest produce and highest quality products. 100% satisfaction guaranteed or your money back.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Organic & Fresh</h3>
+                    <p>Wide selection of organic and locally sourced products. Supporting sustainable farming and healthy living.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer service team is available round the clock to help you with any questions or concerns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50000">0</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="10000">0</div>
+                    <div class="stat-label">Products Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Daily Orders</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="99">0</div>
+                    <div class="stat-label">% Customer Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated with Fresh Deals</h2>
+                    <p>Subscribe to our newsletter and get exclusive offers, seasonal recipes, and the latest updates on fresh arrivals.</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    <p class="newsletter-privacy">We respect your privacy. Unsubscribe at any time.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-shopping-basket"></i>
+                        <span>FreshMart</span>
+                    </div>
+                    <p>Your trusted partner for fresh groceries and everyday essentials. Quality products, fast delivery, exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#offers">Special Offers</a></li>
+                        <li><a href="orders.html">Track Order</a></li>
+                        <li><a href="profile.html">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=fruits">Fruits</a></li>
+                        <li><a href="shop.html?category=vegetables">Vegetables</a></li>
+                        <li><a href="shop.html?category=dairy">Dairy</a></li>
+                        <li><a href="shop.html?category=snacks">Snacks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> support@freshmart.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Fresh Street, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FreshMart. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/homepage.js"></script>
+    
+    <script>
+        // Page loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Scroll progress
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgressBar');
+            const backToTop = document.getElementById('backToTop');
+            
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            scrollProgress.style.width = scrollPercent + '%';
+            
+            // Back to top button
+            if (scrollTop > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+ 
+</body>
+</html>
